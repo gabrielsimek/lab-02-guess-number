@@ -34,11 +34,11 @@ button.addEventListener('click', () => {
     if (isNumberCorrect(randomNumber, userNumber) === 0) {
         hint.textContent = '';
         resetButton.classList.remove('hidden');
-        return gameOutcome.textContent = 'you win';
+        gameOutcome.textContent = 'you win';
     } else if (isNumberCorrect(randomNumber, userNumber) === -1) {
         hint.textContent = 'Too low';
     } else if (isNumberCorrect(randomNumber, userNumber) === 1) {
-        hint.textContent = 'Too high';
+        return hint.textContent = 'Too high';
     }
   
     triesRemaining.textContent = numOfTries;
