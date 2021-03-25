@@ -12,6 +12,7 @@ const gameOutcome = document.getElementById('win-lose');
 
 const triesRemaining = document.getElementById('tries-left');
 
+const resetButton = document.getElementById('reset');
 
 // initialize state
 let randomNumber = Math.ceil(Math.random() * 20);
@@ -28,12 +29,11 @@ button.addEventListener('click', () => {
 
     console.log(numOfTries, 'tries');
 
-    triesRemaining.textContent = numOfTries;
-    if (numOfTries <= 0) {
-        return gameOutcome.textContent = ('you lose');
-    } 
+  
 
     if (isNumberCorrect(randomNumber, userNumber) === 0) {
+        hint.textContent = '';
+        resetButton.classList.remove('hidden');
         return gameOutcome.textContent = 'you win';
     } else if (isNumberCorrect(randomNumber, userNumber) === -1) {
         hint.textContent = 'Too low';
@@ -41,6 +41,13 @@ button.addEventListener('click', () => {
         hint.textContent = 'Too high';
     }
   
+    triesRemaining.textContent = numOfTries;
+    if (numOfTries <= 0) {
+        resetButton.classList.remove('hidden');
+        return gameOutcome.textContent = ('you lose');
+    } 
+
+   
 
 
 
