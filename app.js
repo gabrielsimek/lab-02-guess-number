@@ -25,29 +25,33 @@ console.log(numOfTries, 'tries');
 button.addEventListener('click', () => {
     const userNumber = Number(userInput.value);
 
-    numOfTries--;
+
 
     console.log(numOfTries, 'tries');
+    numOfTries--;
+    triesRemaining.textContent = numOfTries;
 
-  
 
     if (isNumberCorrect(randomNumber, userNumber) === 0) {
         hint.textContent = '';
+        button.classList.add('hidden');
         resetButton.classList.remove('hidden');
-        gameOutcome.textContent = 'you win';
+        return gameOutcome.textContent = 'you win';
     } else if (isNumberCorrect(randomNumber, userNumber) === -1) {
         hint.textContent = 'Too low';
     } else if (isNumberCorrect(randomNumber, userNumber) === 1) {
         return hint.textContent = 'Too high';
     }
-  
-    triesRemaining.textContent = numOfTries;
+
+
+
     if (numOfTries <= 0) {
+        button.classList.add('hidden');
         resetButton.classList.remove('hidden');
         return gameOutcome.textContent = ('you lose');
-    } 
+    }
 
-   
+
 
 
 
